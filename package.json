@@ -1,0 +1,23 @@
+{
+  "name": "grid-and-fetch-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wojciechblim/grid-and-fetch-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wojciechblim/grid-and-fetch-test/issues"
+  },
+  "homepage": "https://github.com/wojciechblim/grid-and-fetch-test#readme",
+  "dependencies": {
+    "serve": "6.5.1"
+  }
+}
