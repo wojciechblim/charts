@@ -3,6 +3,8 @@
 function ChartView(data,parent){
   this.background = document.createElement("div");
   this.background.style.position = "relative";
+  this.background.style.height = "450px";
+  this.background.style.width = "480px";
 
   this.data = data;
   this.max = Math.max(...this.data.map(obj => obj.units));
@@ -19,7 +21,9 @@ ChartView.prototype = {
   createColumns(){
     this.data.map(obj => this.maxColumnHeightPixels*obj.units/this.max).forEach((unit,index) =>{
       const column = document.createElement("div");
+      const columnLabel = document.createTextNode(Math.floor(unit*this.max/this.maxColumnHeightPixels));
 
+      column.appendChild(columnLabel);
       column.setAttribute("style",`height:${unit}px`);
       column.style.width = "60px";
       column.style.position = "absolute";
@@ -27,6 +31,7 @@ ChartView.prototype = {
       column.style.top = `${450-unit}px`;
       column.style.background = "red";
       column.style.margin = "10px";
+      column.style.marginTop = "0";
 
       this.background.appendChild(column);
     });
