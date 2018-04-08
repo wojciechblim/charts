@@ -1,6 +1,6 @@
 
 
-function ChartView(data,parent){
+function ChartView(data,parent,structure){
 
   this.data = data;
   //spread operator niewydajny bo rozbija array na liste jego elementow - używa pętli for
@@ -16,7 +16,7 @@ function ChartView(data,parent){
   });*/
   this.max = this.data.map(obj => obj.units).reduce((a,b)=>Math.max(a,b));
   this.maxColumnHeightPixels = 450;
-  this.structure = "regular";
+  this.structure = structure;
 
 
 //CREATE CHART DIV
@@ -168,6 +168,7 @@ ChartView.prototype = {
 function AppView(){
   this.chart;
   this.sort = "asc";
+  this.structure = "regular";
 
   this.data = [
     {
@@ -233,7 +234,7 @@ function AppView(){
     this.chart.changeColumnsAlignment();
   });
 
-  /*this.button3 = document.createElement('button');
+  this.button3 = document.createElement('button');
   const value3 = document.createTextNode("uklad");
   this.button3.appendChild(value3);
   this.button3.style.marginBottom = "30px";
@@ -242,21 +243,21 @@ function AppView(){
   this.button3 = addEventListener('click',event=>{
     event.stopPropagation();
     event.preventDefault();
-    if(this.chart.structure !== "regular"){
-      this.chart.structure = "regular";
+    if(this.structure !== "regular"){
+      this.structure = "regular";
     }else{
-      this.chart.structure = "horizontal";
+      this.structure = "horizontal";
     }
     this.clearChart();
     this.render();
-  });*/
+  });
 
   this.render();
 }
 
 AppView.prototype = {
   render(){
-    this.chart = new ChartView(this.data,document.body);
+    this.chart = new ChartView(this.data,document.body,this.structure);
   },
 //CREATED TO SORT BY UNITS IN THE FUTURE
   compare(property){
